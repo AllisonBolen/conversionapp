@@ -52,12 +52,13 @@ class ViewController: UIViewController {
         if let yd:Double = Double(self.yards.text!)  {
             yards.resignFirstResponder()
             dismissKeyboard()
-            meters.text = String(format: "%f",yd/1.0936)
+            meters.text = String(format: "%f",yd/lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!)
+            
         }
         if let mt:Double = Double(self.meters.text!) {
             meters.resignFirstResponder()
             dismissKeyboard()
-            yards.text = String(format: "%f", mt*1.0936)
+            yards.text = String(format: "%f", mt*lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Yards)]!)
         }
     }
 }

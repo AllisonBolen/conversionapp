@@ -1,0 +1,6 @@
+version: "Apple Swift version 4.2 (swiftlang-1000.11.37.1 clang-1000.11.45.1)"
+options: "166dee706be504c73db0cea604e89388"
+build_time: [1537549470, 210198000]
+inputs:
+  "/Users/brendannahed/Documents/Work/Current Classes/CIS_357/conversionapp/LengthConversionApp/ViewController.swift": [1537369261, 0]
+  "/Users/brendannahed/Documents/Work/Current Classes/CIS_357/conversionapp/LengthConversionApp/AppDelegate.swift": [1537369261, 0]
