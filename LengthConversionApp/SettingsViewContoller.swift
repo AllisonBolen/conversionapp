@@ -9,11 +9,12 @@
 import UIKit
 
 protocol settingsViewControllerDelegate{
-    func indicateSelsction(vice: String)
+    func indicateSelection(vice: String)
 }
 
 class settingsViewContoller: UIViewController {
     
+    @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
     var selection:String = "Yards"
     var delegate : settingsViewControllerDelegate?
@@ -29,16 +30,14 @@ class settingsViewContoller: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let d = self.delegate{
-            d.indicateSelsction(vice: selection)
+            d.indicateSelection(vice: selection)
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBOutlet weak var picker: UIPickerView!
-    
+        
     /*
     // MARK: - Navigation
 

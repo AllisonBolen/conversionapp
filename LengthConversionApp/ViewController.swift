@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, settingsViewContoller {
+class ViewController: UIViewController, settingsViewControllerDelegate {
+    
 
     @IBOutlet weak var yards: UITextField!
     @IBOutlet weak var meters: UITextField!
