@@ -125,8 +125,9 @@
         <!--Settings View Controller-->
         <scene sceneID="SZV-7m-tyW">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wun-w4-ZOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="5iY-pR-QWp" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Qgv-MW-01K">
+                    <view key="view" contentMode="scaleToFill" id="Qgv-MW-01K" customClass="settingsViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -165,13 +166,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="h1i-ed-gFm"/>
+                        <connections>
+                            <outlet property="picker" destination="Fyy-AO-bWI" id="4QB-t3-vSq"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Mx2-iG-aRG">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="2bC-0V-Wid"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Had-VA-q8k"/>
                     </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wun-w4-ZOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2015.2" y="167.76611694152925"/>
         </scene>
