@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, settingsViewContoller {
 
     @IBOutlet weak var yards: UITextField!
     @IBOutlet weak var meters: UITextField!
@@ -77,6 +77,16 @@ class ViewController: UIViewController {
             meters.resignFirstResponder()
             dismissKeyboard()
             yards.text = String(format: "%f", mt*lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!)
+        }
+    }
+    
+    func indicateSelection(vice: String){
+        self.yards.text = vice
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? settingsViewContoller{
+            dest.delegate = self as! settingsViewControllerDelegate
         }
     }
 }

@@ -21,9 +21,17 @@ class settingsViewContoller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        pickerData = ["yards", "meters", "miles"]
+        self.picker.delegate = self
+        self.picker.dataSource = self
         // Do any additional setup after loading the view.
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let d = self.delegate{
+            d.indicateSelsction(vice: selection)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
