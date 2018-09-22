@@ -66,17 +66,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Calculate(_ sender: UIButton) {
-        if (self.titleLabel.text?.range(of: "Length") != nil){
-            if let yd:Double = Double(self.yards.text!)  {
-                yards.resignFirstResponder()
-                dismissKeyboard()
-                meters.text = String(format: "%f",yd/lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!)
-                
-            }else if let mt:Double = Double(self.meters.text!) {
-                meters.resignFirstResponder()
-                dismissKeyboard()
-                yards.text = String(format: "%f", mt*lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Yards)]!)
-            }
+
+        if let yd:Double = Double(self.yards.text!)  {
+            yards.resignFirstResponder()
+            dismissKeyboard()
+            meters.text = String(format: "%f",yd*lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Yards)]!)
+            
+        }
+        else if let mt:Double = Double(self.meters.text!) {
+            meters.resignFirstResponder()
+            dismissKeyboard()
+            yards.text = String(format: "%f", mt*lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!)
         }
     }
 }
