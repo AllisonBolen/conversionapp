@@ -16,6 +16,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
 
     @IBOutlet weak var yards: UITextField!
     @IBOutlet weak var meters: UITextField!
+    var currentMode = CalculatorMode.Length
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     
     @IBAction func mode(_ sender: UIButton) {
         // modes = convert to volume
-        if (self.titleLabel.text?.range(of: "Length") != nil){
+        if (self.currentMode.rawValue == "Length"){
             self.titleLabel.text = "Volume Conversion"
             self.metersLable.text = "Gallons"
             self.yardsLabel.text = "Liters"

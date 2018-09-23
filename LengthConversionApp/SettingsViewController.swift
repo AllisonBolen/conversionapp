@@ -15,7 +15,7 @@ protocol SettingsViewControllerDelegate{
 class SettingsViewController: UIViewController {
     
     var pickerData: [String] = [String]()
-    var selection:String = "Yards"
+    var selection:String = ""
     var delegate : SettingsViewControllerDelegate?
     
     @IBOutlet weak var unitsFromOut: UITextField!
@@ -30,7 +30,14 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.pickerData = ["Yards", "Meters", "Miles"]
+        if currentMode.rawValue == "Length"{
+            self.pickerData = ["Yards", "Meters", "Miles"]
+            self.selection = "Yards"
+        }
+        else{
+            self.pickerData = ["Liters", "Gallons","Quarts"]
+            self.selection = "Liters"
+        }
         self.picker.delegate = self
         self.picker.dataSource = self
         // Do any additional setup after loading the view.
