@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SettingsViewControllerDelegate {
+    func indicateSelsction(vice: String) {
+        // todo - put your code here!
+    }
+    
 
     @IBOutlet weak var yards: UITextField!
     @IBOutlet weak var meters: UITextField!
@@ -35,6 +39,23 @@ class ViewController: UIViewController {
         meters.text = ""
     }
     
+    @IBAction func mode(_ sender: UIButton) {
+        // modes = convert to volume
+        if (self.titleLabel.text?.range(of: "Length") != nil){
+            self.titleLabel.text = "Volume Conversion"
+            self.metersLable.text = "Gallons"
+            self.yardsLabel.text = "Liters"
+        }else{
+            self.titleLabel.text = "Length Conversion"
+            self.metersLable.text = "Yards"
+            self.yardsLabel.text = "Meters"
+        }
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var metersLable: UILabel!
+    @IBOutlet weak var yardsLabel: UILabel!
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,6 +70,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Calculate(_ sender: UIButton) {
+
         if let yd:Double = Double(self.yards.text!)  {
             yards.resignFirstResponder()
             dismissKeyboard()
@@ -59,6 +81,16 @@ class ViewController: UIViewController {
             meters.resignFirstResponder()
             dismissKeyboard()
             yards.text = String(format: "%f", mt*lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!)
+        }
+    }
+    
+    func indicateSelection(vice: String){
+        self.yards.text = vice
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? SettingsViewController{
+            dest.delegate = self 
         }
     }
 }
