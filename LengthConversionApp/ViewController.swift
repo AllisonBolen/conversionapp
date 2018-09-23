@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, settingsViewControllerDelegate {
+class ViewController: UIViewController, SettingsViewControllerDelegate {
+    func indicateSelsction(vice: String) {
+        // todo - put your code here!
+    }
     
 
     @IBOutlet weak var yards: UITextField!
@@ -86,8 +89,8 @@ class ViewController: UIViewController, settingsViewControllerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? settingsViewContoller{
-            dest.delegate = self as! settingsViewControllerDelegate
+        if let dest = segue.destination as? SettingsViewController{
+            dest.delegate = self 
         }
     }
 }
