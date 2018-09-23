@@ -9,13 +9,15 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate{
-    func indicateSelsction(vice: String)
+    func indicateSelsction(vice_1: String, vice_2: String)
 }
 
 class SettingsViewController: UIViewController {
     
     var pickerData: [String] = [String]()
-    var selection:String = ""
+    var selection:String
+    var to_selection:String
+    var from_selection:String
     var delegate : SettingsViewControllerDelegate?
     
     @IBOutlet weak var unitsFromOut: UITextField!
@@ -45,7 +47,7 @@ class SettingsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let d = self.delegate{
-            d.indicateSelsction(vice: selection)
+            d.indicateSelsction(vice_1: from_selection, vice_2: to_selection)
         }
     }
     override func didReceiveMemoryWarning() {

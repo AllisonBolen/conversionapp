@@ -13,6 +13,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
         // todo - put your code here!
     }
     
+    @IBOutlet weak var ToLabel: UILabel!
+    @IBOutlet weak var FromLabel: UILabel!
 
     @IBOutlet weak var yards: UITextField!
     @IBOutlet weak var meters: UITextField!
@@ -85,8 +87,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
         }
     }
     
-    func indicateSelection(vice: String){
-        self.yards.text = vice
+    func indicateSelection(vice_1: String, vice_2: String){
+        self.FromLabel.text = vice_1
+        self.ToLabel.text = vice_2
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
