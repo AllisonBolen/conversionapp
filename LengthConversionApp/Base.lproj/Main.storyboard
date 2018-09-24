@@ -175,7 +175,11 @@
                                 <action selector="cancelButton:" destination="5iY-pR-QWp" id="XU6-ik-70O"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Had-VA-q8k"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Had-VA-q8k">
+                            <connections>
+                                <action selector="saveButton:" destination="5iY-pR-QWp" id="gko-e9-yOw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="fromLabel" destination="Hol-d4-9Hh" id="oeb-uH-whs"/>

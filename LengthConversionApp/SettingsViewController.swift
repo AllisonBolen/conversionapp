@@ -31,6 +31,12 @@ class SettingsViewController: UIViewController, ViewControllerDelegate {
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func saveButton(_ sender: Any) {
+        if let d = self.delegate{
+            d.indicateSelection(vice_1: from_selection, vice_2: to_selection)
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     override func viewDidLoad() {
@@ -51,9 +57,6 @@ class SettingsViewController: UIViewController, ViewControllerDelegate {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let d = self.delegate{
-            d.indicateSelection(vice_1: from_selection, vice_2: to_selection)
-        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
