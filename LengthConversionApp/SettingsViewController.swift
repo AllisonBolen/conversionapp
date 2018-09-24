@@ -12,34 +12,37 @@ protocol SettingsViewControllerDelegate{
     func indicateSelection(vice_1: String, vice_2: String)
 }
 
-class SettingsViewController: UIViewController {
-    
+class SettingsViewController: UIViewController, ViewControllerDelegate {
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
     var pickerData: [String] = [String]()
     var selection:String = ""
     var to_selection:String = ""
     var from_selection:String = ""
-    var delegate : SettingsViewControllerDelegate?
+    var tempFromLabel:String = ""
+    var tempToLabel:String = ""
+    var delegate : SettingsViewControllerDelegate? = nil
+    var currentMode = CalculatorMode.Length
     
-    @IBOutlet weak var unitsFromOut: UITextField!
-    @IBAction func unitsFrom(_ sender: UITextField) {
-    
+    func indicateSettingsMode(FromLabel: String, ToLabel: String, currentMode: CalculatorMode){
+        self.currentMode = currentMode
+        self.tempFromLabel = FromLabel
+        self.tempToLabel = ToLabel
     }
     
-    @IBOutlet weak var unitsToOut: UITextField!
-    @IBAction func UnitsTo(_ sender: Any) {
-    
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if currentMode.rawValue == "Length"{
+        self.fromLabel.text = tempFromLabel
+        self.toLabel.text = tempToLabel
+        if self.currentMode.rawValue == "Length"{
             self.pickerData = ["Yards", "Meters", "Miles"]
             self.selection = "Yards"
-//        }
-//        else{
-//            self.pickerData = ["Liters", "Gallons","Quarts"]
-//            self.selection = "Liters"
-//        }
+        }
+        else{
+            self.pickerData = ["Liters", "Gallons","Quarts"]
+            self.selection = "Liters"
+        }
         self.picker.delegate = self
         self.picker.dataSource = self
         // Do any additional setup after loading the view.

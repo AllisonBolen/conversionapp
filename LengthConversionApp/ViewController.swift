@@ -8,20 +8,24 @@
 
 import UIKit
 
+protocol ViewControllerDelegate{
+    func indicateSettingsMode(FromLabel: String, ToLabel: String, currentMode: CalculatorMode)
+}
 class ViewController: UIViewController, SettingsViewControllerDelegate {
         
     @IBOutlet weak var ToLabel: UILabel!
     @IBOutlet weak var FromLabel: UILabel!
 
-    @IBOutlet weak var yards: UITextField!
-    @IBOutlet weak var meters: UITextField!
+    @IBOutlet weak var FromTextBox: UITextField!
+    
+    @IBOutlet weak var ToTextBox: UITextField!
     var currentMode = CalculatorMode.Length
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.meters.keyboardType = UIKeyboardType.decimalPad
-        self.yards.keyboardType = UIKeyboardType.decimalPad
+        self.ToTextBox.keyboardType = UIKeyboardType.decimalPad
+        self.FromTextBox.keyboardType = UIKeyboardType.decimalPad
 
         let detectTouch = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(detectTouch)
@@ -30,25 +34,31 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
         self.view.endEditing(true)
     }
     @IBAction func clickMeters(_ sender: Any) {
-        yards.text = ""
+        FromTextBox.text = ""
        // meters.text = ""
     }
     
     @IBAction func clickYards(_ sender: Any) {
        // yards.text = ""
-        meters.text = ""
+        ToTextBox.text = ""
     }
     
     @IBAction func mode(_ sender: UIButton) {
         // modes = convert to volume
         if (self.currentMode.rawValue == "Length"){
             self.titleLabel.text = "Volume Conversion"
-            self.metersLable.text = "Gallons"
-            self.yardsLabel.text = "Liters"
+            self.FromLabel.text = "Gallons"
+            self.ToLabel.text = "Liters"
+            self.FromTextBox.placeholder = "Enter Volume in  \(FromLabel.text!)"
+            self.ToTextBox.placeholder = "Enter Volume in \(ToLabel.text!)"
+            self.currentMode = CalculatorMode.Volume
         }else{
             self.titleLabel.text = "Length Conversion"
-            self.metersLable.text = "Yards"
-            self.yardsLabel.text = "Meters"
+            self.FromLabel.text = "Yards"
+            self.ToLabel.text = "Meters"
+            self.FromTextBox.placeholder = "Enter Length in \(FromLabel.text!)"
+            self.ToTextBox.placeholder = "Enter Length in \(ToLabel.text!)"
+            self.currentMode = CalculatorMode.Length
         }
     }
     
@@ -62,25 +72,25 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     }
 
     @IBAction func clear(_ sender: UIButton) {
-        meters.text = ""
-        yards.text = ""
+        ToTextBox.text = ""
+        FromTextBox.text = ""
         dismissKeyboard()
-        yards.resignFirstResponder()
-        meters.resignFirstResponder()
+        FromTextBox.resignFirstResponder()
+        ToTextBox.resignFirstResponder()
     }
     
     @IBAction func Calculate(_ sender: UIButton) {
 
-        if let yd:Double = Double(self.yards.text!)  {
-            yards.resignFirstResponder()
+        if let yd:Double = Double(self.FromTextBox.text!)  {
+            FromTextBox.resignFirstResponder()
             dismissKeyboard()
-            meters.text = String(format: "%f",yd*lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Yards)]!)
+            ToTextBox.text = String(format: "%f",yd*lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Yards)]!)
             
         }
-        else if let mt:Double = Double(self.meters.text!) {
-            meters.resignFirstResponder()
+        else if let mt:Double = Double(self.ToTextBox.text!) {
+            ToTextBox.resignFirstResponder()
             dismissKeyboard()
-            yards.text = String(format: "%f", mt*lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!)
+            FromTextBox.text = String(format: "%f", mt*lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!)
         }
     }
     
@@ -90,8 +100,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? SettingsViewController{
-            dest.delegate = self 
+        if let dest = segue.destination.childViewControllers[0] as? SettingsViewController{
+           dest.indicateSettingsMode(FromLabel: FromLabel.text!, ToLabel: ToLabel.text!, currentMode: currentMode)
+            dest.delegate = self
         }
     }
 }
