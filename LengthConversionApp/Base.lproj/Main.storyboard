@@ -111,9 +111,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="FromLabel" destination="Hvb-S5-o8l" id="cO3-fq-wHz"/>
+                        <outlet property="FromLabel" destination="RKy-Du-D9p" id="DJX-eZ-SvX"/>
                         <outlet property="FromTextBox" destination="X06-Vu-pgb" id="BWR-tF-KMi"/>
-                        <outlet property="ToLabel" destination="RKy-Du-D9p" id="uJK-XH-4ys"/>
+                        <outlet property="ToLabel" destination="Hvb-S5-o8l" id="E5I-VJ-nsc"/>
                         <outlet property="ToTextBox" destination="PUb-0x-sUe" id="f2R-PN-LqG"/>
                         <outlet property="metersLable" destination="Hvb-S5-o8l" id="Hf2-96-V67"/>
                         <outlet property="titleLabel" destination="2Ml-4E-AX6" id="eNG-AQ-RZl"/>
@@ -170,7 +170,11 @@
                         <viewLayoutGuide key="safeArea" id="h1i-ed-gFm"/>
                     </view>
                     <navigationItem key="navigationItem" id="Mx2-iG-aRG">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="2bC-0V-Wid"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="2bC-0V-Wid">
+                            <connections>
+                                <action selector="cancelButton:" destination="5iY-pR-QWp" id="XU6-ik-70O"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Had-VA-q8k"/>
                     </navigationItem>
                     <connections>

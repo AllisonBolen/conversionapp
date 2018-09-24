@@ -13,8 +13,9 @@ protocol ViewControllerDelegate{
 }
 class ViewController: UIViewController, SettingsViewControllerDelegate {
         
-    @IBOutlet weak var ToLabel: UILabel!
     @IBOutlet weak var FromLabel: UILabel!
+    @IBOutlet weak var ToLabel: UILabel!
+    
 
     @IBOutlet weak var FromTextBox: UITextField!
     
@@ -77,6 +78,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
         dismissKeyboard()
         FromTextBox.resignFirstResponder()
         ToTextBox.resignFirstResponder()
+    }
+    @IBAction func exit(_ sender: Any) {
     }
     
     @IBAction func Calculate(_ sender: UIButton) {

@@ -19,22 +19,24 @@ class SettingsViewController: UIViewController, ViewControllerDelegate {
     var selection:String = ""
     var to_selection:String = ""
     var from_selection:String = ""
-    var tempFromLabel:String = ""
-    var tempToLabel:String = ""
     var delegate : SettingsViewControllerDelegate? = nil
     var currentMode = CalculatorMode.Length
     
     func indicateSettingsMode(FromLabel: String, ToLabel: String, currentMode: CalculatorMode){
         self.currentMode = currentMode
-        self.tempFromLabel = FromLabel
-        self.tempToLabel = ToLabel
+        self.from_selection = FromLabel
+        self.to_selection = ToLabel
+    }
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fromLabel.text = tempFromLabel
-        self.toLabel.text = tempToLabel
+        self.fromLabel.text = from_selection
+        self.toLabel.text = to_selection
         if self.currentMode.rawValue == "Length"{
             self.pickerData = ["Yards", "Meters", "Miles"]
             self.selection = "Yards"
