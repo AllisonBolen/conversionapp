@@ -9,15 +9,15 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate{
-    func indicateSelsction(vice_1: String, vice_2: String)
+    func indicateSelection(vice_1: String, vice_2: String)
 }
 
 class SettingsViewController: UIViewController {
     
     var pickerData: [String] = [String]()
-    var selection:String
-    var to_selection:String
-    var from_selection:String
+    var selection:String = ""
+    var to_selection:String = ""
+    var from_selection:String = ""
     var delegate : SettingsViewControllerDelegate?
     
     @IBOutlet weak var unitsFromOut: UITextField!
@@ -32,14 +32,14 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if currentMode.rawValue == "Length"{
+//        if currentMode.rawValue == "Length"{
             self.pickerData = ["Yards", "Meters", "Miles"]
             self.selection = "Yards"
-        }
-        else{
-            self.pickerData = ["Liters", "Gallons","Quarts"]
-            self.selection = "Liters"
-        }
+//        }
+//        else{
+//            self.pickerData = ["Liters", "Gallons","Quarts"]
+//            self.selection = "Liters"
+//        }
         self.picker.delegate = self
         self.picker.dataSource = self
         // Do any additional setup after loading the view.
@@ -47,7 +47,7 @@ class SettingsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let d = self.delegate{
-            d.indicateSelsction(vice_1: from_selection, vice_2: to_selection)
+            d.indicateSelection(vice_1: from_selection, vice_2: to_selection)
         }
     }
     override func didReceiveMemoryWarning() {

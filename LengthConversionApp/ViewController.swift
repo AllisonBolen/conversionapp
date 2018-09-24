@@ -9,10 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, SettingsViewControllerDelegate {
-    func indicateSelsction(vice: String) {
-        // todo - put your code here!
-    }
-    
+        
     @IBOutlet weak var ToLabel: UILabel!
     @IBOutlet weak var FromLabel: UILabel!
 
