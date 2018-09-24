@@ -12,7 +12,8 @@ protocol SettingsViewControllerDelegate{
     func indicateSelection(vice_1: String, vice_2: String)
 }
 
-class SettingsViewController: UIViewController, ViewControllerDelegate {
+class SettingsViewController: UIViewController{
+    
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
     var pickerData: [String] = [String]()
@@ -22,11 +23,6 @@ class SettingsViewController: UIViewController, ViewControllerDelegate {
     var delegate : SettingsViewControllerDelegate? = nil
     var currentMode = CalculatorMode.Length
     
-    func indicateSettingsMode(FromLabel: String, ToLabel: String, currentMode: CalculatorMode){
-        self.currentMode = currentMode
-        self.from_selection = FromLabel
-        self.to_selection = ToLabel
-    }
     
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
