@@ -103,48 +103,49 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     }
     
     func conversionFinder() -> Double{
+        var conversion: Double!
         if currentMode.rawValue == "Length"{
             if FromLabel.text == "Meters" && ToLabel.text == "Yards"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Meters)]!
             }else if FromLabel.text == "Meters" && ToLabel.text == "Meters"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Meters)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Meters)]!
             }else if FromLabel.text == "Meters" && ToLabel.text == "Miles"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Miles, fromUnits: .Meters)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Miles, fromUnits: .Meters)]!
             }else if FromLabel.text == "Yards" && ToLabel.text == "Meters"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Yards)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Yards)]!
             }else if FromLabel.text == "Yards" && ToLabel.text == "Yards"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Yards)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Yards)]!
             }else if FromLabel.text == "Yards" && ToLabel.text == "Miles"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Miles, fromUnits: .Yards)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Miles, fromUnits: .Yards)]!
             }else if FromLabel.text == "Miles" && ToLabel.text == "Miles"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Miles, fromUnits: .Miles)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Miles, fromUnits: .Miles)]!
             }else if FromLabel.text == "Miles" && ToLabel.text == "Meters"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Miles)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Meters, fromUnits: .Miles)]!
             }else if FromLabel.text == "Miles" && ToLabel.text == "Yards"{
-                return lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Miles)]!
+                conversion = lengthConversionTable[LengthConversionKey(toUnits: .Yards, fromUnits: .Miles)]!
             }
         }else{
             if FromLabel.text == "Gallons" && ToLabel.text == "Liters"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Liters, fromUnits: .Gallons)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Liters, fromUnits: .Gallons)]!
             } else if FromLabel.text == "Gallons" && ToLabel.text == "Gallons"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Gallons, fromUnits: .Gallons)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Gallons, fromUnits: .Gallons)]!
             }else if FromLabel.text == "Gallons" && ToLabel.text == "Quarts"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Quarts, fromUnits: .Gallons)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Quarts, fromUnits: .Gallons)]!
             } else if FromLabel.text == "Liters" && ToLabel.text == "Gallons"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Gallons, fromUnits: .Liters)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Gallons, fromUnits: .Liters)]!
             } else if FromLabel.text == "Liters" && ToLabel.text == "Liters"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Liters, fromUnits: .Liters)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Liters, fromUnits: .Liters)]!
             } else if FromLabel.text == "Liters" && ToLabel.text == "Quarts"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Quarts, fromUnits: .Liters)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Quarts, fromUnits: .Liters)]!
             } else if FromLabel.text == "Quarts" && ToLabel.text == "Gallons"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Gallons, fromUnits: .Quarts)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Gallons, fromUnits: .Quarts)]!
             } else if FromLabel.text == "Quarts" && ToLabel.text == "Quarts"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Quarts, fromUnits: .Quarts)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Quarts, fromUnits: .Quarts)]!
             } else if FromLabel.text == "Quarts" && ToLabel.text == "Liters"{
-                return volumeConversionTable[VolumeConversionKey(toUnits: .Liters, fromUnits: .Quarts)]!
+                conversion = volumeConversionTable[VolumeConversionKey(toUnits: .Liters, fromUnits: .Quarts)]!
             }
         }
-        return 0.0
+        return conversion
     }
     
     func indicateSelection(vice_1: String, vice_2: String){
