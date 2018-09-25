@@ -22,13 +22,8 @@ class SettingsViewController: UIViewController, ViewControllerDelegate {
     var from_selection:String = ""
     var delegate : SettingsViewControllerDelegate? = nil
     var currentMode = CalculatorMode.Length
-    // get the info from the main page
-    func indicateSettingsMode(FromLabel: String, ToLabel: String, currentMode: CalculatorMode){
-        self.currentMode = currentMode
-        self.from_selection = FromLabel
-        self.to_selection = ToLabel
-    }
-    // return to the main page with no changes
+    
+    
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

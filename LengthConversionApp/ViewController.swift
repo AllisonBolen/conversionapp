@@ -8,9 +8,7 @@
 
 import UIKit
 
-protocol ViewControllerDelegate{
-    func indicateSettingsMode(FromLabel: String, ToLabel: String, currentMode: CalculatorMode)
-}
+
 class ViewController: UIViewController, SettingsViewControllerDelegate {
         
     @IBOutlet weak var FromLabel: UILabel!
@@ -104,7 +102,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination.childViewControllers[0] as? SettingsViewController{
-           dest.indicateSettingsMode(FromLabel: FromLabel.text!, ToLabel: ToLabel.text!, currentMode: currentMode)
+            dest.to_selection = self.FromLabel.text!
+            dest.from_selection = self.ToLabel.text!
+            dest.currentMode = self.currentMode
             dest.delegate = self
         }
     }
