@@ -12,7 +12,7 @@ protocol SettingsViewControllerDelegate{
     func indicateSelection(vice_1: String, vice_2: String)
 }
 
-class SettingsViewController: UIViewController, ViewControllerDelegate {
+class SettingsViewController: UIViewController {
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController, ViewControllerDelegate {
     var from_selection:String = ""
     var delegate : SettingsViewControllerDelegate? = nil
     var currentMode = CalculatorMode.Length
+    var select = true
     
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -64,18 +65,23 @@ class SettingsViewController: UIViewController, ViewControllerDelegate {
     // show the picker
     @objc func showFromPicker(){
         self.picker.isHidden = false
-        self.fromLabel.text = self.selection
-        self.from_selection = self.selection
+        select = true
     }
     // show the picker
     @objc func showToPicker(){
         self.picker.isHidden = false
-        self.toLabel.text = self.selection
-        self.to_selection = selection
+        select = false
     }
     // hide the picker
     @objc func hidePicker(){
         self.picker.isHidden = true
+        if(select){
+            self.fromLabel.text = self.selection
+            self.from_selection = self.selection
+        }else{
+            self.toLabel.text = self.selection
+            self.to_selection = selection
+        }
         self.picker.reloadAllComponents()
     }
     
