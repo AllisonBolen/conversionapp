@@ -9,44 +9,89 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate{
-    func indicateSelsction(vice: String)
+    func indicateSelection(vice_1: String, vice_2: String)
 }
 
 class SettingsViewController: UIViewController {
-    
+    @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
     var pickerData: [String] = [String]()
-    var selection:String = "Yards"
-    var delegate : SettingsViewControllerDelegate?
+    var selection:String = ""
+    var to_selection:String = ""
+    var from_selection:String = ""
+    var delegate : SettingsViewControllerDelegate? = nil
+    var currentMode = CalculatorMode.Length
+    var select = true
     
-    @IBOutlet weak var unitsFromOut: UITextField!
-    @IBAction func unitsFrom(_ sender: UITextField) {
     
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
-    
-    @IBOutlet weak var unitsToOut: UITextField!
-    @IBAction func UnitsTo(_ sender: Any) {
-    
+    // send back the selected values to the main page
+    @IBAction func saveButton(_ sender: Any) {
+        if let d = self.delegate{
+            d.indicateSelection(vice_1: from_selection, vice_2: to_selection)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.pickerData = ["Yards", "Meters", "Miles"]
+        
+        self.fromLabel.text = from_selection
+        self.toLabel.text = to_selection
+        // set up picker values
+        if self.currentMode.rawValue == "Length"{
+            self.pickerData = ["Yards", "Meters", "Miles"]
+            self.selection = "Yards"
+        }
+        else{
+            self.pickerData = ["Liters", "Gallons","Quarts"]
+            self.selection = "Liters"
+        }
+        // set up picker values
         self.picker.delegate = self
         self.picker.dataSource = self
-        // Do any additional setup after loading the view.
+        // set up touch on labels and view
+        let detectFromLabel = UITapGestureRecognizer(target: self, action: #selector(showFromPicker))
+        let detectToLabel = UITapGestureRecognizer(target: self, action: #selector(showToPicker))
+        let detectTouchView = UITapGestureRecognizer(target: self, action: #selector(hidePicker))
+        // set up the labels and views with the gestures
+        self.fromLabel.addGestureRecognizer(detectFromLabel)
+        self.toLabel.addGestureRecognizer(detectToLabel)
+        self.view.addGestureRecognizer(detectTouchView)
     }
+    // show the picker
+    @objc func showFromPicker(){
+        self.picker.isHidden = false
+        select = true
+    }
+    // show the picker
+    @objc func showToPicker(){
+        self.picker.isHidden = false
+        select = false
+    }
+    // hide the picker
+    @objc func hidePicker(){
+        self.picker.isHidden = true
+        if(select){
+            self.fromLabel.text = self.selection
+            self.from_selection = self.selection
+        }else{
+            self.toLabel.text = self.selection
+            self.to_selection = selection
+        }
+        self.picker.reloadAllComponents()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let d = self.delegate{
-            d.indicateSelsction(vice: selection)
-        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBOutlet weak var picker: UIPickerView!
     
 }
 
