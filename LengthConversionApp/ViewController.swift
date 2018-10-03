@@ -27,6 +27,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         self.ToTextBox.keyboardType = UIKeyboardType.decimalPad
         self.FromTextBox.keyboardType = UIKeyboardType.decimalPad
+        self.view.backgroundColor = BACKGROUND_COLOR
 
         let detectTouch = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(detectTouch)
@@ -67,6 +68,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
             self.ToTextBox.placeholder = "Enter Length in \(ToLabel.text!)"
             self.currentMode = CalculatorMode.Length
         }
+        textBoxPlaceholderColor()
     }
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -148,6 +150,17 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
         return conversion
     }
     
+    func textBoxPlaceholderColor(){
+        guard let ftb = self.FromTextBox.placeholder else{
+            return
+        }
+        self.FromTextBox.attributedPlaceholder = NSAttributedString(string: ftb, attributes: [NSAttributedStringKey.foregroundColor : FOREGROUND_COLOR])
+        guard let ttb = self.ToTextBox.placeholder else{
+            return
+        }
+        self.ToTextBox.attributedPlaceholder = NSAttributedString(string: ttb, attributes: [NSAttributedStringKey.foregroundColor : FOREGROUND_COLOR])
+    }
+    
     func indicateSelection(vice_1: String, vice_2: String){
         self.FromLabel.text = vice_1
         self.ToLabel.text = vice_2
@@ -158,6 +171,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
             self.FromTextBox.placeholder = "Enter Volume in  \(FromLabel.text!)"
             self.ToTextBox.placeholder = "Enter Volume in \(ToLabel.text!)"
         }
+        textBoxPlaceholderColor()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
