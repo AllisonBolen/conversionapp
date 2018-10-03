@@ -16,6 +16,9 @@
 		C653B9B621501F2E00E094AE /* LengthConversionAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C653B9B521501F2E00E094AE /* LengthConversionAppUITests.swift */; };
 		C653B9C42156E10000E094AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C653B9C32156E10000E094AE /* SettingsViewController.swift */; };
 		DF8BFCCA21555FFB002E1FA3 /* UnitsAndModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BFCC921555FFB002E1FA3 /* UnitsAndModes.swift */; };
+		DFF4BA3E21643ECB0059ED4E /* ConversionCalcTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4BA3D21643ECA0059ED4E /* ConversionCalcTextField.swift */; };
+		DFF4BA402164434D0059ED4E /* ConversionCalcLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4BA3F2164434D0059ED4E /* ConversionCalcLabel.swift */; };
+		DFF4BA42216444660059ED4E /* ConversionCalcButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4BA41216444660059ED4E /* ConversionCalcButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		C653B9B721501F2E00E094AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C653B9C32156E10000E094AE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DF8BFCC921555FFB002E1FA3 /* UnitsAndModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsAndModes.swift; sourceTree = "<group>"; };
+		DFF4BA3D21643ECA0059ED4E /* ConversionCalcTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionCalcTextField.swift; sourceTree = "<group>"; };
+		DFF4BA3F2164434D0059ED4E /* ConversionCalcLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionCalcLabel.swift; sourceTree = "<group>"; };
+		DFF4BA41216444660059ED4E /* ConversionCalcButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionCalcButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,9 @@
 				C653B99C21501F2E00E094AE /* Assets.xcassets */,
 				C653B99E21501F2E00E094AE /* LaunchScreen.storyboard */,
 				C653B9A121501F2E00E094AE /* Info.plist */,
+				DFF4BA3D21643ECA0059ED4E /* ConversionCalcTextField.swift */,
+				DFF4BA3F2164434D0059ED4E /* ConversionCalcLabel.swift */,
+				DFF4BA41216444660059ED4E /* ConversionCalcButton.swift */,
 			);
 			path = LengthConversionApp;
 			sourceTree = "<group>";
@@ -262,6 +271,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFF4BA3E21643ECB0059ED4E /* ConversionCalcTextField.swift in Sources */,
+				DFF4BA42216444660059ED4E /* ConversionCalcButton.swift in Sources */,
+				DFF4BA402164434D0059ED4E /* ConversionCalcLabel.swift in Sources */,
 				C653B9C42156E10000E094AE /* SettingsViewController.swift in Sources */,
 				C653B99821501F2D00E094AE /* ViewController.swift in Sources */,
 				DF8BFCCA21555FFB002E1FA3 /* UnitsAndModes.swift in Sources */,
