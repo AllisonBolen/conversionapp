@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = BACKGROUND_COLOR
         self.fromLabel.text = from_selection
         self.toLabel.text = to_selection
         // set up picker values
